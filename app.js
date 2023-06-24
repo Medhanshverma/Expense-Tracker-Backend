@@ -10,7 +10,10 @@ const PORT = process.env.PORT
 
 app.use(express.json())
 app.use(cors())
-
+app.get("/",(req,res) =>{
+    res.setHeader("Access-Control-Allow-Credentials","true");
+    res.send("API is running");
+});
 readdirSync('./routes').map((route) => app.use('/api/v1', require('./routes/' + route)))
 
 const server = () => {
